@@ -2,7 +2,7 @@ from typing import List
 from helpers import print_two_new_lines_before_and_after
 
 def process_input_sentence(sentence: str):
-    sentence = sentence.strip()
+    sentence = sentence.strip().lower()
     sentence = f"<s> {sentence} </s>"
     return sentence
 
