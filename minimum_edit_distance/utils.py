@@ -4,6 +4,7 @@ DELETION_COST = 1
 INSERTION_COST = 1
 REPLACE_COST = 1
 
+
 def create_2d_list(n: int, m: int) -> List[List[int]]:
     lst: List[List[int]] = []
 
@@ -12,10 +13,11 @@ def create_2d_list(n: int, m: int) -> List[List[int]]:
 
         for _ in range(m):
             temp.append(0)
-        
+
         lst.append(temp)
-    
+
     return lst
+
 
 class Grid:
     def __init__(self, n, m) -> None:
@@ -25,11 +27,11 @@ class Grid:
         row, col = key
 
         return self.lst[row][col]
-    
+
     def __setitem__(self, key, value: int) -> None:
         row, col = key
 
         self.lst[row][col] = value
-    
+
     def __iter__(self):
         return iter(self.lst)

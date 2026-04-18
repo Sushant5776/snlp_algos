@@ -5,7 +5,5 @@ def print_two_new_lines_before_and_after(func):
         print("\n\n")
 
         return result
-    
+
     return wrapper
-        
-    

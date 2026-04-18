@@ -1,10 +1,12 @@
 from typing import List
 from helpers import print_two_new_lines_before_and_after
 
+
 def process_input_sentence(sentence: str):
     sentence = sentence.strip().lower()
     sentence = f"<s> {sentence} </s>"
     return sentence
+
 
 def create_corpus(number_of_sentences: int) -> List[str]:
     corpus = []
@@ -16,18 +18,20 @@ def create_corpus(number_of_sentences: int) -> List[str]:
 
     return corpus
 
+
 def create_unigram_counts(corpus: List[str]):
     unigram_counts: dict[str, int] = {}
 
     flattened_corpus = " ".join(corpus)
     tokens = flattened_corpus.split()
     types = set(tokens)
-    
+
     for type_ in types:
         type_appearance_count = tokens.count(type_)
         unigram_counts[type_] = type_appearance_count
 
     return unigram_counts
+
 
 def create_bigram_counts(corpus: List[str]):
     bigram_counts: dict[str, int] = {}
@@ -48,13 +52,17 @@ def create_bigram_counts(corpus: List[str]):
 
     return bigram_counts
 
+
 def compute_unsmoothed_unigram(unigram_counts: dict[str, int], token: str) -> float:
     N = sum(unigram_counts.values())
     p = unigram_counts[token] / N
 
     return p
 
-def compute_unsmoothed_bigram(unigram_counts: dict[str, int], bigram_counts: dict[str, int], token_lst: List[str]) -> float:
+
+def compute_unsmoothed_bigram(
+    unigram_counts: dict[str, int], bigram_counts: dict[str, int], token_lst: List[str]
+) -> float:
     bi_token = " ".join(token_lst)
 
     bi_token_count = bigram_counts[bi_token]
@@ -62,7 +70,7 @@ def compute_unsmoothed_bigram(unigram_counts: dict[str, int], bigram_counts: dic
     p = bi_token_count / history_count
 
     return p
-    
+
 
 @print_two_new_lines_before_and_after
 def print_corpus(corpus: List[str]):
@@ -71,10 +79,11 @@ def print_corpus(corpus: List[str]):
         print(f"Sentence {index}: {sentence}")
     print("-----Printed Corpus-----")
 
+
 @print_two_new_lines_before_and_after
 def print_type_token_counts(n_gram_counts: dict[str, int], name="unigram"):
     name = name.capitalize()
-    
+
     print(f"-----Printing {name} Counts-----")
 
     for type_, count in n_gram_counts.items():
