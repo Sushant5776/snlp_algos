@@ -48,6 +48,22 @@ def create_bigram_counts(corpus: List[str]):
 
     return bigram_counts
 
+def compute_unsmoothed_unigram(unigram_counts: dict[str, int], token: str) -> float:
+    N = sum(unigram_counts.values())
+    p = unigram_counts[token] / N
+
+    return p
+
+def compute_unsmoothed_bigram(unigram_counts: dict[str, int], bigram_counts: dict[str, int], token_lst: List[str]) -> float:
+    bi_token = " ".join(token_lst)
+
+    bi_token_count = bigram_counts[bi_token]
+    history_count = unigram_counts[bi_token[0]]
+    p = bi_token_count / history_count
+
+    return p
+    
+
 @print_two_new_lines_before_and_after
 def print_corpus(corpus: List[str]):
     print("-----Printing Corpus-----")
