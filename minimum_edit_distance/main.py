@@ -1,5 +1,5 @@
-from utils import Grid
-from utils import DELETION_COST, REPLACE_COST, INSERTION_COST
+from minimum_edit_distance.utils import Grid
+from minimum_edit_distance.utils import DELETION_COST, REPLACE_COST, INSERTION_COST
 
 
 def min_edit_distance(distance_matrix: Grid, source: str, target: str) -> int:
